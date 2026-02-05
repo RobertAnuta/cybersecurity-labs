@@ -1,4 +1,4 @@
-\# Cybersecurity Labs
+# Cybersecurity Labs
 
 
 
@@ -6,31 +6,31 @@ Hands-on cybersecurity labs focused on network design, segmentation, firewall co
 
 
 
-\## Objectives
+## Objectives
 
-\- Build a segmented virtual network
+- Build a segmented virtual network
 
-\- Configure firewall rules
+- Configure firewall rules
 
-\- Simulate secure and insecure traffic flows
+- Simulate secure and insecure traffic flows
 
-\- Document security decisions and configurations
-
-
-
-\## Tools \& Technologies
-
-\- VirtualBox
-
-\- pfSense
-
-\- Ubuntu Server
-
-\- Ubuntu Desktop
+- Document security decisions and configurations
 
 
 
-\## Status
+## Tools \& Technologies
+
+- VirtualBox
+
+- pfSense
+
+- Ubuntu Server
+
+- Ubuntu Desktop
+
+
+
+## Status
 
 Project in progress.
 
