@@ -25,6 +25,17 @@ Goals:
 
 Overall Risk Score: 8 / 10 (High)
 
+## Project Structure
+
+- `case-study/botium-toys-risk-assessment.md`  
+  Full audit report including scope, assets, risk description, score, and detailed findings.
+
+- `controls-analysis/controls-compliance-evaluation.md`  
+  Breakdown of administrative, technical, and physical controls, including compliance exposure analysis.
+
+- `references/control-categories-overview.md`  
+  Summary of control categories and control types used as analytical framework for the assessment.
+
 ## Takeaway
 
 The primary weakness is not the absence of individual controls, but the lack of structured oversight and enforcement.
