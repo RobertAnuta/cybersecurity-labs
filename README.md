@@ -1,38 +1,35 @@
 # Cybersecurity Labs
 
+Building practical cybersecurity experience through structured detection and network labs.
+This repository focuses on developing defensive security capability through hands-on lab environments using VirtualBox, pfSense, and Linux systems.
+My background in compliance governance and data-driven risk analysis shapes how I approach security problems: identify gaps, understand root cause, and improve controls.
 
+## Core Focus
 
-Hands-on cybersecurity labs focused on network design, segmentation, firewall configuration, and virtualized infrastructure using VirtualBox and pfSense.
+- Network segmentation and firewall configuration  
+- Traffic flow analysis  
+- Detection development  
+- Incident investigation simulations  
+- Structured application of the NIST framework  
 
+## Current Focus
 
+- Expanding log analysis capability  
+- Strengthening TCP/IP and traffic analysis depth  
+- Building structured incident response case studies  
 
-## Objectives
+## What These Labs Reflect
 
-- Build a segmented virtual network
+These projects reflect how I approach security problems:
+- Root cause analysis  
+- Defensive improvement thinking  
+- Business impact awareness  
+- Structured investigative mindset  
 
-- Configure firewall rules
+## Tools & Technologies
 
-- Simulate secure and insecure traffic flows
-
-- Document security decisions and configurations
-
-
-
-## Tools \& Technologies
-
-- VirtualBox
-
-- pfSense
-
-- Ubuntu Server
-
-- Ubuntu Desktop
-
-
-
-## Status
-
-Project in progress.
-
-
-
+- VirtualBox  
+- pfSense  
+- Ubuntu Server  
+- Ubuntu Desktop  
+- Linux CLI  
