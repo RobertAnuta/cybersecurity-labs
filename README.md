@@ -29,6 +29,6 @@ cause, and improve controls.
 | Project | Focus | Framework |
 |---|---|---|
 | [Network Lab - pfSense](./03_network-lab-pfSense/) | Firewall config, network segmentation | - |
-| [Access Control Incident](./04_access-control-incident/) | Log analysis, access governance | - |
+| [Access Control Incident](./04_access-control-incident-investigation/) | Log analysis, access governance | - |
 | [DoS Incident Report](./01_incident-report-dos-nist/) | Incident analysis, control gaps | NIST CSF |
 | [Risk Assessment - Botium Toys](./02_risk-assessment-google-cert/) | Risk identification, compliance review | NIST CSF |
