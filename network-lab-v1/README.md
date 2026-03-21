@@ -1,70 +1,53 @@
-# \# Cybersecurity Network Lab v1
+# Network Lab — pfSense Firewall & Network Segmentation
 
-# 
+## Overview
 
-### \## Overview
+I designed and deployed a segmented network environment using pfSense 
+as the central firewall and router, with VirtualBox as the 
+virtualization platform.
 
-This lab demonstrates the design and implementation of a segmented network using virtualization. The goal is to simulate a realistic environment where internal users, a DMZ server, and external traffic are controlled through a centralized firewall.
+The lab simulates a realistic three-zone network: internal users on LAN,
+an exposed service on DMZ, and simulated internet traffic on WAN — all 
+controlled through a single firewall.
 
-# 
+After completing the initial configuration, I reset everything 
+deliberately. I realised I had followed steps without fully understanding 
+the reasoning behind each one. I'm rebuilding it from scratch to develop 
+real understanding, not just a working setup.
 
-### \## Objectives
+## Network Design
 
-##### \- Design a segmented network (WAN, LAN, DMZ)
+| Zone | Interface | Subnet | Purpose |
+---------------------------------------------------
+| WAN | em0 | DHCP (10.0.2.x) | Simulated internet |
+| LAN | em1 | 192.168.1.1/24 | Internal clients |
+| DMZ | em2 | 192.168.2.1/24 | Isolated server |
 
-##### \- Implement a firewall acting as both router and security gateway
+## Lab Components
 
-##### \- Simulate internal clients using different operating systems
+- **Firewall/Router:** pfSense 2.7.2
+- **LAN Clients:** Ubuntu Desktop, Windows 10
+- **DMZ:** Ubuntu Server
+- **Platform:** VirtualBox
 
-##### \- Prepare the environment for firewall rule testing and traffic control
+## Diagram
 
-# 
+![Network Diagram](diagrams/network-diagram-v1.png)
 
-### \## Network Components
+## Status
 
-##### \- Firewall: pfSense (routing and traffic filtering)
+Infrastructure design complete. pfSense interfaces configured.  
+Currently rebuilding from scratch to develop deeper understanding 
+of interface assignment, routing logic, and firewall rule behaviour.
 
-##### \- LAN Clients:
+## Skills Demonstrated
 
-#####   - Windows client
+- Network segmentation (LAN / DMZ / WAN)
+- Firewall deployment and interface configuration
+- Virtualized lab environment design
 
-#####   - Ubuntu client
+## Next Steps
 
-##### \- DMZ - Ubuntu Server
-
-##### \- Virtualization platform: VirtualBox
-
-### 
-
-### \## Network Design
-
-##### The network is divided into three main zones:
-
-##### \- \*\*WAN\*\*: Simulated Internet access
-
-##### \- \*\*LAN\*\*: Internal user network
-
-##### \- \*\*DMZ\*\*: Isolated network for exposed services
-
-##### 
-
-##### All inter-network traffic is routed and filtered by the firewall.
-
-# 
-
-### \## Diagram
-
-##### !\[Network Diagram](diagrams/network-diagram-v1.png)
-
-# 
-
-### \## Status
-
-##### Infrastructure design completed.
-
-##### Next step: VirtualBox network configuration and VM deployment.
-
-# 
-
-
-
+- Rebuild pfSense configuration with documented reasoning per step
+- Define and test firewall rules between zones
+- Document traffic flow and control decisions
