@@ -32,7 +32,7 @@ real understanding, not just a working setup.
 
 ## Diagram
 
-![Network Diagram](diagrams/network-diagram-v1.png)
+![Network Diagram](diagrams/network-diagram-inside-threat.png)
 
 ## Status
 
