@@ -1,34 +1,28 @@
-# Network Lab — pfSense Firewall & Network Segmentation
+# Network Lab — SIEM Detection & Inside Threat Simulation
 
 ## Overview
 
-I designed and deployed a segmented network environment using pfSense 
-as the central firewall and router, with VirtualBox as the 
-virtualization platform.
+I built a segmented virtual network with a working SIEM that collects logs from all endpoints in real time.
 
-The lab simulates a realistic three-zone network: internal users on LAN,
-an exposed service on DMZ, and simulated internet traffic on WAN — all 
-controlled through a single firewall.
-
-After completing the initial configuration, I reset everything 
-deliberately. I realised I had followed steps without fully understanding 
-the reasoning behind each one. I'm rebuilding it from scratch to develop 
-real understanding, not just a working setup.
+The lab simulates an insider threat scenario: an attacker on the internal LAN moves laterally across network segments while Splunk captures everything. The goal was to build something I could actually attack and defend, not just read about.
 
 ## Network Design
 
-| Zone | Interface | Subnet | Purpose |
----------------------------------------------------
-| WAN | em0 | DHCP (10.0.2.x) | Simulated internet |
-| LAN | em1 | 192.168.1.1/24 | Internal clients |
-| DMZ | em2 | 192.168.2.1/24 | Isolated server |
+| Zone | Subnet | Purpose |
+|---|---|---|
+| LAN | 192.168.10.0/24 | Attacker + Victim 1 |
+| DMZ | 192.168.20.0/24 | Victim 2 (isolated server) |
+| SIEM | 192.168.30.0/24 | Splunk (log collection only) |
+| WAN | 10.0.2.0/24 | Internet via NAT |
 
 ## Lab Components
 
-- **Firewall/Router:** pfSense 2.7.2
-- **LAN Clients:** Ubuntu Desktop, Windows 10
-- **DMZ:** Ubuntu Server
-- **Platform:** VirtualBox
+- **Firewall/Router:** pfSense CE 2.7.2
+- **Attacker:** Kali Linux 2025.4
+- **Victim 1 (LAN):** Windows 10
+- **Victim 2 (DMZ):** Ubuntu Server 24.04.3 LTS
+- **SIEM:** Splunk Enterprise 10.2.1
+- **Platform:** Oracle VirtualBox (24 GB RAM host)
 
 ## Diagram
 
@@ -36,18 +30,20 @@ real understanding, not just a working setup.
 
 ## Status
 
-Infrastructure design complete. pfSense interfaces configured.  
-Currently rebuilding from scratch to develop deeper understanding 
-of interface assignment, routing logic, and firewall rule behaviour.
+Lab fully configured. All three endpoints sending logs to Splunk.  
+Attack scenario in progress.
 
 ## Skills Demonstrated
 
-- Network segmentation (LAN / DMZ / WAN)
-- Firewall deployment and interface configuration
-- Virtualized lab environment design
+- Network segmentation (LAN / DMZ / SIEM / WAN)
+- Firewall deployment and rule configuration (pfSense)
+- SIEM setup and log ingestion (Splunk Enterprise)
+- Universal Forwarder deployment on Linux and Windows
+- Routing troubleshooting across network segments
+- SPL queries for event analysis
 
 ## Next Steps
 
-- Rebuild pfSense configuration with documented reasoning per step
-- Define and test firewall rules between zones
-- Document traffic flow and control decisions
+- Execute inside threat attack scenario (Kali to Windows 10 to Ubuntu DMZ)
+- Configure detection alerts in Splunk
+- Document findings with screenshots and SPL queries
