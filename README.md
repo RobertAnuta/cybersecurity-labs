@@ -32,3 +32,4 @@ cause, and improve controls.
 | [Access Control Incident](./04_access-control-incident-investigation/) | Log analysis, access governance | - |
 | [DoS Incident Report](./01_incident-report-dos-nist/) | Incident analysis, control gaps | NIST CSF |
 | [Risk Assessment - Botium Toys](./02_risk-assessment-google-cert/) | Risk identification, compliance review | NIST CSF |
+| [Security Awareness Training](./05_security-awareness-training-platform/) | Awareness Education and Training| NIST CSF, ISO 27001 |
