@@ -39,7 +39,7 @@
             <p>Social engineering is the manipulation of a person, rather than a system, to gain unauthorized access to information. Attackers rely on triggers such as urgency, authority, fear, and curiosity.</p>
 
             <img src="{{ url_for('static', filename='images/module-01-phishing-indicators.png') }}"
-                 alt="Phishing indicators infographic"
+                 alt="Infographic showing the four phishing triggers: urgency, authority, fear, and curiosity"
                  class="module-visual"
                  onerror="this.style.display='none'; document.getElementById('visual-fallback').style.display='block';">
             <p id="visual-fallback" class="visual-fallback" style="display:none;">
@@ -54,11 +54,9 @@
             <h2>Practical Exercise</h2>
             <p class="exercise-intro">You receive this message. Answer the questions below based on what you have learned.</p>
 
-            <div class="mock-email">
-                <p><strong>From:</strong> it-support@yourcompany-secure.com</p>
-                <p><strong>Subject:</strong> Urgent: Verify your account within 24 hours</p>
-                <p>Dear user, we detected unusual activity. Click the link below to verify your account immediately or it will be locked.</p>
-            </div>
+            <img src="{{ url_for('static', filename='images/module-01-phishing-email-mockup.png') }}"
+                 alt="Mockup of a phishing email in an email client"
+                 class="mock-email-image">
 
             <form method="post" action="{{ url_for('module_page', module_id=module.id) }}">
                 <div class="question">
