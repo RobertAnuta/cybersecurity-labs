@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ module.title }} - Security Awareness Training</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="dashboard-body">
+    <div class="presentation-box">
+        <div class="presentation-header">
+            <span class="compliance-tag">{{ module.compliance_mapping }}</span>
+            <a href="{{ url_for('dashboard') }}" class="logout-link">Back to dashboard</a>
+        </div>
+
+        <h1>{{ module.title }}</h1>
+
+        <div class="slide-dots">
+            <span class="dot active" data-dot="1"></span>
+            <span class="dot" data-dot="2"></span>
+            <span class="dot" data-dot="3"></span>
+            <span class="dot" data-dot="4"></span>
+        </div>
+
+        <!-- Slide 1: Objectives -->
+        <div class="slide active" data-slide="1">
+            <h2>Learning Objectives</h2>
+            <ul class="objectives-list">
+                <li>Identify the core psychological triggers used in social engineering attacks</li>
+                <li>Recognize the technical indicators of a phishing email</li>
+                <li>Apply a consistent decision process when encountering a suspicious message</li>
+                <li>Report a suspected phishing attempt through the correct channel</li>
+            </ul>
+        </div>
+
+        <!-- Slide 2: Content + Visual -->
+        <div class="slide" data-slide="2">
+            <h2>What is Social Engineering</h2>
+            <p>Social engineering is the manipulation of a person, rather than a system, to gain unauthorized access to information. Attackers rely on triggers such as urgency, authority, fear, and curiosity.</p>
+
+            <img src="{{ url_for('static', filename='images/module-01-phishing-indicators.png') }}"
+                 alt="Phishing indicators infographic"
+                 class="module-visual"
+                 onerror="this.style.display='none'; document.getElementById('visual-fallback').style.display='block';">
+            <p id="visual-fallback" class="visual-fallback" style="display:none;">
+                Infographic placeholder: the four common phishing indicators (urgency, authority, fear, curiosity).
+            </p>
+
+            <p><strong>Key indicators to watch for:</strong> mismatched sender address, generic greeting, urgent requests, suspicious links, and requests for sensitive data.</p>
+        </div>
+
+        <!-- Slide 3: Exercise -->
+        <div class="slide" data-slide="3">
+            <h2>Practical Exercise</h2>
+            <p class="exercise-intro">You receive this message. Answer the questions below based on what you have learned.</p>
+
+            <div class="mock-email">
+                <p><strong>From:</strong> it-support@yourcompany-secure.com</p>
+                <p><strong>Subject:</strong> Urgent: Verify your account within 24 hours</p>
+                <p>Dear user, we detected unusual activity. Click the link below to verify your account immediately or it will be locked.</p>
+            </div>
+
+            <form method="post" action="{{ url_for('module_page', module_id=module.id) }}">
+                <div class="question">
+                    <p>1. What is the strongest indicator this is a phishing attempt?</p>
+                    <label><input type="radio" name="q1" value="a" required> The email uses a formal tone</label>
+                    <label><input type="radio" name="q1" value="b"> The sender domain does not match the real company domain</label>
+                    <label><input type="radio" name="q1" value="c"> The email has a subject line</label>
+                </div>
+
+                <div class="question">
+                    <p>2. True or False: Urgency is a common manipulation trigger in phishing.</p>
+                    <label><input type="radio" name="q2" value="true" required> True</label>
+                    <label><input type="radio" name="q2" value="false"> False</label>
+                </div>
+
+                <div class="question">
+                    <p>3. What should you do with this message?</p>
+                    <label><input type="radio" name="q3" value="click" required> Click the link to check if it's real</label>
+                    <label><input type="radio" name="q3" value="ignore"> Ignore it and delete it</label>
+                    <label><input type="radio" name="q3" value="report"> Report it through the official channel</label>
+                </div>
+
+                <button type="submit">Submit answers</button>
+            </form>
+        </div>
+
+        <!-- Slide 4: Summary / Result -->
+        <div class="slide" data-slide="4">
+            <h2>Summary</h2>
+            <p>Social engineering succeeds by exploiting human psychology, not technical vulnerabilities. Pause, verify, and report, every time you are unsure.</p>
+
+            {% if result %}
+                <div class="result-box {{ 'result-pass' if result.passed else 'result-fail' }}">
+                    <p>Score: {{ result.score }} / {{ result.total }}</p>
+                    <p>{{ "Passed" if result.passed else "Not passed, review the material and try again" }}</p>
+                </div>
+                <a href="{{ url_for('dashboard') }}" class="module-link">Back to dashboard</a>
+            {% else %}
+                <p class="visual-fallback">Complete the exercise on the previous slide to see your result here.</p>
+            {% endif %}
+        </div>
+
+        <div class="slide-nav">
+            <button type="button" id="prevBtn" onclick="changeSlide(-1)">Back</button>
+            <button type="button" id="nextBtn" onclick="changeSlide(1)">Next</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = {{ 4 if result else 1 }};
+        const totalSlides = 4;
+
+        function showSlide(n) {
+            document.querySelectorAll(".slide").forEach(el => el.classList.remove("active"));
+            document.querySelectorAll(".dot").forEach(el => el.classList.remove("active"));
+            document.querySelector(`.slide[data-slide="${n}"]`).classList.add("active");
+            document.querySelector(`.dot[data-dot="${n}"]`).classList.add("active");
+
+            document.getElementById("prevBtn").style.visibility = n === 1 ? "hidden" : "visible";
+            document.getElementById("nextBtn").style.visibility = n === totalSlides ? "hidden" : "visible";
+        }
+
+        function changeSlide(direction) {
+            currentSlide = Math.min(Math.max(currentSlide + direction, 1), totalSlides);
+            showSlide(currentSlide);
+        }
+
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>

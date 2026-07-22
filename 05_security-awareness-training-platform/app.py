@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from werkzeug.security import check_password_hash
+from datetime import datetime
 from models import db, User, Module, Completion
 
 app = Flask(__name__)
@@ -57,9 +58,47 @@ def dashboard():
 
 @app.route("/module/<int:module_id>", methods=["GET", "POST"])
 def module_page(module_id):
-    # GET: show the module content and the practice exercise
-    # POST: score the exercise and save a Completion record
-    pass
+    if "user_id" not in session:
+        return redirect(url_for("login"))
+
+    module = Module.query.get_or_404(module_id)
+    result = None
+
+    if request.method == "POST":
+        correct_answers = {"q1": "b", "q2": "true", "q3": "report"}
+        submitted_answers = {
+            "q1": request.form.get("q1"),
+            "q2": request.form.get("q2"),
+            "q3": request.form.get("q3"),
+        }
+
+        score = sum(
+            1 for key, value in correct_answers.items()
+            if submitted_answers.get(key) == value
+        )
+        passed = score >= 2
+
+        completion = Completion.query.filter_by(
+            user_id=session["user_id"], module_id=module_id
+        ).first()
+
+        if completion:
+            completion.score = score
+            completion.passed = passed
+            completion.completed_at = datetime.utcnow()
+        else:
+            completion = Completion(
+                user_id=session["user_id"],
+                module_id=module_id,
+                score=score,
+                passed=passed,
+            )
+            db.session.add(completion)
+
+        db.session.commit()
+        result = {"score": score, "total": 3, "passed": passed}
+
+    return render_template("module.html", module=module, result=result)
 
 
 if __name__ == "__main__":
