@@ -1,0 +1,146 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-box {
+    background: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+h1 {
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-top: 12px;
+    font-size: 14px;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #185fa5;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0c447c;
+}
+
+.error {
+    background-color: #fcebeb;
+    color: #791f1f;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.dashboard-body {
+    align-items: flex-start;
+    padding-top: 60px;
+}
+
+.dashboard-box {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 500px;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.dashboard-header h1 {
+    margin: 0;
+}
+
+.logout-link {
+    font-size: 14px;
+    color: #185fa5;
+    text-decoration: none;
+}
+
+.module-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.module-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.module-title {
+    flex: 1;
+    font-size: 15px;
+}
+
+.status {
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    margin-right: 12px;
+}
+
+.status-completed {
+    background-color: #eaf3de;
+    color: #27500a;
+}
+
+.status-pending {
+    background-color: #f1efe8;
+    color: #444441;
+}
+
+.module-link {
+    font-size: 14px;
+    color: white;
+    background-color: #185fa5;
+    padding: 6px 14px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.module-link:hover {
+    background-color: #0c447c;
+}

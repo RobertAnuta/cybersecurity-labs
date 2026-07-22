@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - Security Awareness Training</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="dashboard-body">
+    <div class="dashboard-box">
+        <div class="dashboard-header">
+            <h1>Your training modules</h1>
+            <a href="{{ url_for('logout') }}" class="logout-link">Log out</a>
+        </div>
+
+        <ul class="module-list">
+            {% for module in modules %}
+                <li class="module-item">
+                    <span class="module-title">{{ module.title }}</span>
+
+                    {% if module.id in completed_module_ids %}
+                        <span class="status status-completed">Completed</span>
+                    {% else %}
+                        <span class="status status-pending">Not started</span>
+                    {% endif %}
+
+                    <a href="{{ url_for('module_page', module_id=module.id) }}" class="module-link">Open</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
